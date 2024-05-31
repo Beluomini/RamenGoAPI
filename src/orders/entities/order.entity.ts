@@ -1,7 +1,7 @@
 export class Order {
-  id?: string;
+  id?: number;
   image?: string;
   description?: string;
-  brothId: string;
-  proteinId: string;
+  brothId: number;
+  proteinId: number;
 }

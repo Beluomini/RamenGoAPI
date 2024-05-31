@@ -26,17 +26,17 @@ export class ProteinsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: number) {
     return this.proteinsService.findOne(+id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProteinDto: UpdateProteinDto) {
+  update(@Param('id') id: number, @Body() updateProteinDto: UpdateProteinDto) {
     return this.proteinsService.update(+id, updateProteinDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  remove(@Param('id') id: number) {
     return this.proteinsService.remove(+id);
   }
 }

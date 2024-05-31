@@ -8,7 +8,7 @@ generator client {
 }
 
 model Broth {
-  id              String   @id @default(uuid())
+  id              Int   @id @default(autoincrement())
   name            String
   imageInactive   String
   imageActive     String
@@ -22,7 +22,7 @@ model Broth {
 }
 
 model Protein {
-  id              String   @id @default(uuid())
+  id              Int   @id @default(autoincrement())
   name            String
   imageInactive   String
   imageActive     String
@@ -36,13 +36,13 @@ model Protein {
 }
 
 model Order {
-  id              String   @id @default(uuid())
+  id              Int   @id @default(autoincrement())
   image           String
   description     String
   broth           Broth @relation(fields: [brothId], references: [id])
-  brothId         String
+  brothId         Int
   protein         Protein @relation(fields: [proteinId], references: [id])
-  proteinId       String
+  proteinId       Int
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 

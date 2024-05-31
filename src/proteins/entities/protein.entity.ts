@@ -1,5 +1,5 @@
 export class Protein {
-  id?: string;
+  id?: number;
   name: string;
   imageInactive: string;
   imageActive: string;

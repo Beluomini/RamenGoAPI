@@ -4,10 +4,6 @@ import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 export class CreateBrothDto {
   @ApiProperty()
   @IsString()
-  id?: string;
-
-  @ApiProperty()
-  @IsString()
   @IsNotEmpty()
   name: string;
 

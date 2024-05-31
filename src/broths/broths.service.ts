@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateBrothDto } from './dto/create-broth.dto';
 import { UpdateBrothDto } from './dto/update-broth.dto';
 import { PrismaService } from 'src/PrismaService';
@@ -8,22 +8,55 @@ export class BrothsService {
   constructor(private prisma: PrismaService) {}
 
   create(createBrothDto: CreateBrothDto) {
-    return 'This action adds a new broth';
+    const broth = this.prisma.broth.create({
+      data: createBrothDto,
+    });
+    return broth;
   }
 
   findAll() {
-    return `This action returns all broths`;
+    return this.prisma.broth.findMany();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} broth`;
+    const broth = this.prisma.broth.findFirst({
+      where: {
+        id: id,
+      },
+    });
+    if (!broth) {
+      throw new NotFoundException(`Broth with id ${id} not found`);
+    }
+    return broth;
   }
 
   update(id: number, updateBrothDto: UpdateBrothDto) {
-    return `This action updates a #${id} broth`;
+    const broth = this.prisma.broth.findFirst({
+      where: {
+        id: id,
+      },
+    });
+    if (!broth) {
+      throw new NotFoundException(`Broth with id ${id} not found`);
+    }
+    const newbroth = this.prisma.broth.update({
+      where: { id: id },
+      data: updateBrothDto,
+    });
+    return newbroth;
   }
 
   remove(id: number) {
-    return `This action removes a #${id} broth`;
+    const broth = this.prisma.broth.findFirst({
+      where: {
+        id: id,
+      },
+    });
+    if (!broth) {
+      throw new NotFoundException(`Broth with id ${id} not found`);
+    }
+    return this.prisma.broth.delete({
+      where: { id: id },
+    });
   }
 }
