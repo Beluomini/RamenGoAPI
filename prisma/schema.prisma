@@ -1,6 +1,10 @@
 datasource db {
-  provider = "postgresql"
-  url      = "postgresql://beluomini:minipass@localhost:5432/rvRamenGo"
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
 }
 
 model Broth {
