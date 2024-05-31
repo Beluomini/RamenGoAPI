@@ -1,9 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CreateBrothDto } from './dto/create-broth.dto';
 import { UpdateBrothDto } from './dto/update-broth.dto';
+import { PrismaService } from 'src/PrismaService';
 
 @Injectable()
 export class BrothsService {
+  constructor(private prisma: PrismaService) {}
+
   create(createBrothDto: CreateBrothDto) {
     return 'This action adds a new broth';
   }
