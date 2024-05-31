@@ -3,9 +3,9 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
+  Put,
 } from '@nestjs/common';
 import { BrothsService } from './broths.service';
 import { CreateBrothDto } from './dto/create-broth.dto';
@@ -36,17 +36,17 @@ export class BrothsController {
   @ApiResponse({ status: 200, description: 'The Broth' })
   @ApiResponse({ status: 404, description: 'Broth with id ${id} not found' })
   findOne(@Param('id') id: number) {
-    return this.brothsService.findOne(id);
+    return this.brothsService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   @ApiResponse({
     status: 200,
     description: 'The Broth has been successfully updated.',
   })
   @ApiResponse({ status: 404, description: 'Broth with id ${id} not found' })
   update(@Param('id') id: number, @Body() updateBrothDto: UpdateBrothDto) {
-    return this.brothsService.update(id, updateBrothDto);
+    return this.brothsService.update(+id, updateBrothDto);
   }
 
   @Delete(':id')
@@ -56,6 +56,6 @@ export class BrothsController {
   })
   @ApiResponse({ status: 404, description: 'Broth with id ${id} not found' })
   remove(@Param('id') id: number) {
-    return this.brothsService.remove(id);
+    return this.brothsService.remove(+id);
   }
 }
