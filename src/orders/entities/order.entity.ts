@@ -1,5 +1,5 @@
 export class Order {
-  id?: number;
+  id?: string;
   image?: string;
   description?: string;
   brothId: number;

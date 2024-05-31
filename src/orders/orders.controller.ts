@@ -35,22 +35,22 @@ export class OrdersController {
   @Get(':id')
   @ApiResponse({ status: 200, description: 'Order found.' })
   @ApiResponse({ status: 404, description: 'Order not found.' })
-  findOne(@Param('id') id: number) {
-    return this.ordersService.findOne(+id);
+  findOne(@Param('id') id: string) {
+    return this.ordersService.findOne(id);
   }
 
   @Put(':id')
   @ApiResponse({ status: 200, description: 'Order updated.' })
   @ApiResponse({ status: 404, description: 'Order not found.' })
   @ApiResponse({ status: 400, description: 'Bad request.' })
-  update(@Param('id') id: number, @Body() updateOrderDto: UpdateOrderDto) {
-    return this.ordersService.update(+id, updateOrderDto);
+  update(@Param('id') id: string, @Body() updateOrderDto: UpdateOrderDto) {
+    return this.ordersService.update(id, updateOrderDto);
   }
 
   @Delete(':id')
   @ApiResponse({ status: 200, description: 'Order deleted.' })
   @ApiResponse({ status: 404, description: 'Order not found.' })
-  remove(@Param('id') id: number) {
-    return this.ordersService.remove(+id);
+  remove(@Param('id') id: string) {
+    return this.ordersService.remove(id);
   }
 }

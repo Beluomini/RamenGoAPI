@@ -1,7 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class CreateOrderDto {
+  @ApiProperty()
+  @IsString()
+  @IsOptional()
+  id?: string;
+
   @ApiProperty()
   @IsString()
   @IsOptional()
@@ -13,12 +18,12 @@ export class CreateOrderDto {
   description?: string;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   @IsNotEmpty()
-  brothId: number;
+  brothId: string;
 
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   @IsNotEmpty()
-  proteinId: number;
+  proteinId: string;
 }
