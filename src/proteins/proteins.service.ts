@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateProteinDto } from './dto/create-protein.dto';
 import { UpdateProteinDto } from './dto/update-protein.dto';
 import { PrismaService } from 'src/PrismaService';
@@ -8,22 +8,55 @@ export class ProteinsService {
   constructor(private prisma: PrismaService) {}
 
   create(createProteinDto: CreateProteinDto) {
-    return 'This action adds a new protein';
+    const protein = this.prisma.protein.create({
+      data: createProteinDto,
+    });
+    return protein;
   }
 
   findAll() {
-    return `This action returns all proteins`;
+    return this.prisma.protein.findMany();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} protein`;
+    const protein = this.prisma.protein.findFirst({
+      where: {
+        id: id,
+      },
+    });
+    if (!protein) {
+      throw new NotFoundException(`Protein with id ${id} not found`);
+    }
+    return protein;
   }
 
   update(id: number, updateProteinDto: UpdateProteinDto) {
-    return `This action updates a #${id} protein`;
+    const protein = this.prisma.protein.findFirst({
+      where: {
+        id: id,
+      },
+    });
+    if (!protein) {
+      throw new NotFoundException(`Protein with id ${id} not found`);
+    }
+    const newProtein = this.prisma.protein.update({
+      where: { id: id },
+      data: updateProteinDto,
+    });
+    return newProtein;
   }
 
   remove(id: number) {
-    return `This action removes a #${id} protein`;
+    const protein = this.prisma.protein.findFirst({
+      where: {
+        id: id,
+      },
+    });
+    if (!protein) {
+      throw new NotFoundException(`Protein with id ${id} not found`);
+    }
+    return this.prisma.protein.delete({
+      where: { id: id },
+    });
   }
 }
