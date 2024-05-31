@@ -1,0 +1,46 @@
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://beluomini:minipass@localhost:5432/rvRamenGo"
+}
+
+model Broth {
+  id              String   @id @default(uuid())
+  name            String
+  imageInactive   String
+  imageActive     String
+  description     String
+  price           Float
+  orders          Order[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("broths")
+}
+
+model Protein {
+  id              String   @id @default(uuid())
+  name            String
+  imageInactive   String
+  imageActive     String
+  description     String
+  price           Float
+  orders          Order[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("proteins")
+}
+
+model Order {
+  id              String   @id @default(uuid())
+  image           String
+  description     String
+  broth           Broth @relation(fields: [brothId], references: [id])
+  brothId         String
+  protein         Protein @relation(fields: [proteinId], references: [id])
+  proteinId       String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("orders")
+}
