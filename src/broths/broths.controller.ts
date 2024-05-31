@@ -35,8 +35,8 @@ export class BrothsController {
   @Get(':id')
   @ApiResponse({ status: 200, description: 'The Broth' })
   @ApiResponse({ status: 404, description: 'Broth with id ${id} not found' })
-  findOne(@Param('id') id: number) {
-    return this.brothsService.findOne(+id);
+  findOne(@Param('id') id: string) {
+    return this.brothsService.findOne(id);
   }
 
   @Put(':id')
@@ -45,8 +45,8 @@ export class BrothsController {
     description: 'The Broth has been successfully updated.',
   })
   @ApiResponse({ status: 404, description: 'Broth with id ${id} not found' })
-  update(@Param('id') id: number, @Body() updateBrothDto: UpdateBrothDto) {
-    return this.brothsService.update(+id, updateBrothDto);
+  update(@Param('id') id: string, @Body() updateBrothDto: UpdateBrothDto) {
+    return this.brothsService.update(id, updateBrothDto);
   }
 
   @Delete(':id')
@@ -55,7 +55,7 @@ export class BrothsController {
     description: 'The Broth has been successfully deleted.',
   })
   @ApiResponse({ status: 404, description: 'Broth with id ${id} not found' })
-  remove(@Param('id') id: number) {
-    return this.brothsService.remove(+id);
+  remove(@Param('id') id: string) {
+    return this.brothsService.remove(id);
   }
 }

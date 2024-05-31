@@ -1,5 +1,5 @@
 export class Broth {
-  id?: number;
+  id?: string;
   name: string;
   imageInactive: string;
   imageActive: string;

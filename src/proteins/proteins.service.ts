@@ -18,7 +18,7 @@ export class ProteinsService {
     return this.prisma.protein.findMany();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     const protein = this.prisma.protein.findFirst({
       where: {
         id: id,
@@ -30,7 +30,7 @@ export class ProteinsService {
     return protein;
   }
 
-  update(id: number, updateProteinDto: UpdateProteinDto) {
+  update(id: string, updateProteinDto: UpdateProteinDto) {
     const protein = this.prisma.protein.findFirst({
       where: {
         id: id,
@@ -46,7 +46,7 @@ export class ProteinsService {
     return newProtein;
   }
 
-  remove(id: number) {
+  remove(id: string) {
     const protein = this.prisma.protein.findFirst({
       where: {
         id: id,

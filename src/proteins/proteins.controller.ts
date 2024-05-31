@@ -35,8 +35,8 @@ export class ProteinsController {
   @Get(':id')
   @ApiResponse({ status: 200, description: 'The Protein' })
   @ApiResponse({ status: 404, description: 'Protein with id ${id} not found' })
-  findOne(@Param('id') id: number) {
-    return this.proteinsService.findOne(+id);
+  findOne(@Param('id') id: string) {
+    return this.proteinsService.findOne(id);
   }
 
   @Put(':id')
@@ -45,8 +45,8 @@ export class ProteinsController {
     description: 'The Protein has been successfully updated.',
   })
   @ApiResponse({ status: 404, description: 'Protein with id ${id} not found' })
-  update(@Param('id') id: number, @Body() updateProteinDto: UpdateProteinDto) {
-    return this.proteinsService.update(+id, updateProteinDto);
+  update(@Param('id') id: string, @Body() updateProteinDto: UpdateProteinDto) {
+    return this.proteinsService.update(id, updateProteinDto);
   }
 
   @Delete(':id')
@@ -55,7 +55,7 @@ export class ProteinsController {
     description: 'The Protein has been successfully deleted.',
   })
   @ApiResponse({ status: 404, description: 'Protein with id ${id} not found' })
-  remove(@Param('id') id: number) {
-    return this.proteinsService.remove(+id);
+  remove(@Param('id') id: string) {
+    return this.proteinsService.remove(id);
   }
 }

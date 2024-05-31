@@ -18,7 +18,7 @@ export class BrothsService {
     return this.prisma.broth.findMany();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     const broth = this.prisma.broth.findFirst({
       where: {
         id: id,
@@ -30,7 +30,7 @@ export class BrothsService {
     return broth;
   }
 
-  update(id: number, updateBrothDto: UpdateBrothDto) {
+  update(id: string, updateBrothDto: UpdateBrothDto) {
     const broth = this.prisma.broth.findFirst({
       where: {
         id: id,
@@ -46,7 +46,7 @@ export class BrothsService {
     return newbroth;
   }
 
-  remove(id: number) {
+  remove(id: string) {
     const broth = this.prisma.broth.findFirst({
       where: {
         id: id,
@@ -55,8 +55,6 @@ export class BrothsService {
     if (!broth) {
       throw new NotFoundException(`Broth with id ${id} not found`);
     }
-    return this.prisma.broth.delete({
-      where: { id: id },
-    });
+    return this.prisma.broth.delete({ where: { id } });
   }
 }
