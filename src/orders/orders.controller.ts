@@ -4,15 +4,19 @@ import {
   Post,
   Body,
   Param,
+  Headers,
   Delete,
   Put,
 } from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
-import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiHeader, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('orders')
+@ApiHeader({
+  name: 'x-api-key',
+})
 @Controller('orders')
 export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}
@@ -22,8 +26,11 @@ export class OrdersController {
   @ApiResponse({ status: 400, description: 'Bad request.' })
   @ApiResponse({ status: 403, description: 'Forbidden' })
   @ApiResponse({ status: 500, description: 'Internal server error.' })
-  create(@Body() createOrderDto: CreateOrderDto) {
-    return this.ordersService.create(createOrderDto);
+  create(
+    @Body() createOrderDto: CreateOrderDto,
+    @Headers('x-api-key') apiKey: string,
+  ) {
+    return this.ordersService.create(createOrderDto, apiKey);
   }
 
   @Get()

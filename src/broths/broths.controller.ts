@@ -4,15 +4,19 @@ import {
   Post,
   Body,
   Param,
+  Headers,
   Delete,
   Put,
 } from '@nestjs/common';
 import { BrothsService } from './broths.service';
 import { CreateBrothDto } from './dto/create-broth.dto';
 import { UpdateBrothDto } from './dto/update-broth.dto';
-import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiHeader, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('broths')
+@ApiHeader({
+  name: 'x-api-key',
+})
 @Controller('broths')
 export class BrothsController {
   constructor(private readonly brothsService: BrothsService) {}
@@ -28,8 +32,8 @@ export class BrothsController {
 
   @Get()
   @ApiResponse({ status: 200, description: 'List of Broths' })
-  findAll() {
-    return this.brothsService.findAll();
+  findAll(@Headers('x-api-key') apiKey: string) {
+    return this.brothsService.findAll(apiKey);
   }
 
   @Get(':id')

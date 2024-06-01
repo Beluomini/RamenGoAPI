@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateBrothDto } from './dto/create-broth.dto';
 import { UpdateBrothDto } from './dto/update-broth.dto';
 import { PrismaService } from 'src/PrismaService';
@@ -14,7 +18,10 @@ export class BrothsService {
     return broth;
   }
 
-  findAll() {
+  findAll(apiKey: string) {
+    if (apiKey !== process.env.API_KEY) {
+      throw new ForbiddenException('x-api-key header missing');
+    }
     return this.prisma.broth.findMany();
   }
 

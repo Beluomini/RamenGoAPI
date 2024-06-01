@@ -4,15 +4,19 @@ import {
   Post,
   Body,
   Param,
+  Headers,
   Delete,
   Put,
 } from '@nestjs/common';
 import { ProteinsService } from './proteins.service';
 import { CreateProteinDto } from './dto/create-protein.dto';
 import { UpdateProteinDto } from './dto/update-protein.dto';
-import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiHeader, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('proteins')
+@ApiHeader({
+  name: 'x-api-key',
+})
 @Controller('proteins')
 export class ProteinsController {
   constructor(private readonly proteinsService: ProteinsService) {}
@@ -28,8 +32,8 @@ export class ProteinsController {
 
   @Get()
   @ApiResponse({ status: 200, description: 'List of Proteins' })
-  findAll() {
-    return this.proteinsService.findAll();
+  findAll(@Headers('x-api-key') apiKey: string) {
+    return this.proteinsService.findAll(apiKey);
   }
 
   @Get(':id')

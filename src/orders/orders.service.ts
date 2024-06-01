@@ -12,7 +12,10 @@ export class OrdersService {
     private readonly httpService: HttpService,
   ) {}
 
-  async create(createOrderDto: CreateOrderDto) {
+  async create(createOrderDto: CreateOrderDto, apiKey: string) {
+    if (apiKey !== process.env.API_KEY) {
+      throw new BadRequestException('x-api-key header missing');
+    }
     const broth = await this.prisma.broth.findUnique({
       where: { id: createOrderDto.brothId },
     });
