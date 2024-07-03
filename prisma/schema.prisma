@@ -36,7 +36,7 @@ model Protein {
 }
 
 model Order {
-  id              String   @id
+  id              String   @id @default(uuid())
   image           String
   description     String
   broth           Broth @relation(fields: [brothId], references: [id])

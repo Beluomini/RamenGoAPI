@@ -1,3 +1,5 @@
+import { Order } from 'src/orders/entities/order.entity';
+
 export class Protein {
   id?: string;
   name: string;
@@ -5,4 +7,5 @@ export class Protein {
   imageActive: string;
   description: string;
   price: number;
+  orders?: Order[];
 }

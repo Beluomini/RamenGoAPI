@@ -10,12 +10,12 @@ export class CreateOrderDto {
   @ApiProperty()
   @IsString()
   @IsOptional()
-  image?: string;
+  image: string;
 
   @ApiProperty()
   @IsString()
   @IsOptional()
-  description?: string;
+  description: string;
 
   @ApiProperty()
   @IsString()
