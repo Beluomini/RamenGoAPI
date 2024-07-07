@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateBrothDto } from './dto/create-broth.dto';
 import { UpdateBrothDto } from './dto/update-broth.dto';
-import { PrismaService } from 'src/PrismaService';
+import { PrismaService } from '../PrismaService';
 
 @Injectable()
 export class BrothsService {
