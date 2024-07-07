@@ -21,8 +21,6 @@ describe('BrothsService', () => {
 
       prisma.broth.findMany = jest.fn().mockResolvedValue(result);
 
-      console.log(await brothsService.findAll());
-
       expect(await brothsService.findAll()).toBe(result);
     });
   });
