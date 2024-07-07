@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateProteinDto } from './dto/create-protein.dto';
 import { UpdateProteinDto } from './dto/update-protein.dto';
-import { PrismaService } from 'src/PrismaService';
+import { PrismaService } from '../PrismaService';
 
 @Injectable()
 export class ProteinsService {
@@ -30,8 +30,8 @@ export class ProteinsService {
     return protein;
   }
 
-  update(id: string, updateProteinDto: UpdateProteinDto) {
-    const protein = this.prisma.protein.findFirst({
+  async update(id: string, updateProteinDto: UpdateProteinDto) {
+    const protein = await this.prisma.protein.findFirst({
       where: {
         id: id,
       },
@@ -46,8 +46,8 @@ export class ProteinsService {
     return newProtein;
   }
 
-  remove(id: string) {
-    const protein = this.prisma.protein.findFirst({
+  async remove(id: string) {
+    const protein = await this.prisma.protein.findFirst({
       where: {
         id: id,
       },
