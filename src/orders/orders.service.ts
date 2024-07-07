@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
-import { PrismaService } from 'src/PrismaService';
+import { PrismaService } from '../PrismaService';
 
 @Injectable()
 export class OrdersService {
@@ -19,12 +19,6 @@ export class OrdersService {
     }
     const order = this.prisma.order.create({
       data: createOrderDto,
-      // data: {
-      //   brothId: createOrderDto.brothId,
-      //   proteinId: createOrderDto.proteinId,
-      //   description: createOrderDto.description,
-      //   image: createOrderDto.image,
-      // },
     });
     return order;
   }
