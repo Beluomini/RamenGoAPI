@@ -1,6 +1,6 @@
 # RamenGo API
 
-One platform so that the user can place a ramen order, choosing the types of broths and proteins in the dish, and a test to...
+One platform so that the user can place a ramen order, choosing the types of broths and proteins in the dish, and make a order with that.
 
 ## ▶️ Run
 
@@ -13,6 +13,15 @@ To start de backend in development environment you need install Node and run:
 npm install
 
 npm run dev
+```
+
+## 🦾 Testing
+The API has unit tests to the service layer using Jest, that can be run with:
+
+```bash
+npm install
+
+npm test
 ```
 
 ## 🧾 Documentation
