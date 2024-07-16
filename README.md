@@ -17,7 +17,49 @@ npm run dev
 
 ## 🧾 Documentation
 
-The documentation can be viwed when the app is runing in [{API_URL}/api#/](http://localhost:3000/api#/)
+The documentation was written with Swagger and can be viwed when the app is runing in [{API_URL}/api#/](http://localhost:3000/api#/)
+
+## ⚙️ Configuration
+
+To use POST, PUT and DELETE routes of Proteins and Broths is necessary a API Key in environtment variables.
+
+The .env file must to be in aplication root path, and de variable definition must to be like:
+
+```dotenv
+API_KEY='YourApiKey'
+```
+
+This key will be searched in the requisition header with the key "x-api-key". Therefore, is neceessary define your api key and incluude in the header for the routes mentioned above.
+
+## 🧪 Testing
+
+In this API was used Jest to unit tests, these tests aim to test the main functionalities.
+
+To start the automate tests just run:
+
+```bash
+npm test
+```
+
+## 💭 Features
+
+- [x] Database
+- [x] Models
+- [x] Controllers
+- [x] Services
+  - [x] Create
+  - [x] Update
+  - [x] Read All
+  - [x] Read One
+  - [x] Delete
+- [x] Middleware
+- [x] Documentation
+- [ ] Tests
+  - [x] Unit Tests
+  - [ ] E2E Tests (working...)
+- [ ] Message Queueing (working...)
+- [ ] Docker (working...)
+- [ ] Login (working...)
 
 ## 📖 Bibliography
 
