@@ -15,15 +15,6 @@ npm install
 npm run dev
 ```
 
-## 🦾 Testing
-The API has unit tests to the service layer using Jest, that can be run with:
-
-```bash
-npm install
-
-npm test
-```
-
 ## 🧾 Documentation
 
 The documentation was written with Swagger and can be viwed when the app is runing in [{API_URL}/api#/](http://localhost:3000/api#/)
