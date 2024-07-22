@@ -68,11 +68,12 @@ npm test
   - [x] Delete
 - [x] Middleware
 - [x] Documentation
+- [x] Docker
+- [x] PostgreSQL
 - [ ] Tests
   - [x] Unit Tests
   - [ ] E2E Tests (working...)
 - [ ] Message Queueing (working...)
-- [ ] Docker (working...)
 - [ ] Login (working...)
 
 ## 📖 Bibliography
