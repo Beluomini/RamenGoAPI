@@ -79,7 +79,8 @@ npm test
 ## 📖 Bibliography
 
 - [TypeScript](https://www.typescriptlang.org/)
-- [Node v20.12.0](https://nodejs.org/en)
-- [Nest v10.3.2](https://nestjs.com/)
+- [Node](https://nodejs.org/en)
+- [Nest](https://nestjs.com/)
 - [Prisma](https://www.prisma.io/)
+- [PostgreSQL](https://www.postgresql.org/)
 - [SQLite](https://www.sqlite.org/)
