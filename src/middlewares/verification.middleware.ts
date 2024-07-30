@@ -6,7 +6,7 @@ export class VerificationMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
     const apiKey = process.env.API_KEY;
     if (!req.header('x-api-key')) {
-      res.status(400).json({
+      res.status(401).json({
         error: 'Missing header',
         message: 'Please provide x-api-key header',
       });
