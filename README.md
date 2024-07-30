@@ -81,6 +81,7 @@ npm test
 - [TypeScript](https://www.typescriptlang.org/)
 - [Node](https://nodejs.org/en)
 - [Nest](https://nestjs.com/)
+- [Jest](https://jestjs.io/pt-BR/)
 - [Prisma](https://www.prisma.io/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [SQLite](https://www.sqlite.org/)
