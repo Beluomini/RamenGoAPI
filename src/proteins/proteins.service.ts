@@ -18,8 +18,8 @@ export class ProteinsService {
     return this.prisma.protein.findMany();
   }
 
-  findOne(id: string) {
-    const protein = this.prisma.protein.findFirst({
+  async findOne(id: string) {
+    const protein = await this.prisma.protein.findFirst({
       where: {
         id: id,
       },
