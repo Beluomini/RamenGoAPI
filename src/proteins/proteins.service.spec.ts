@@ -1,6 +1,6 @@
 import { NotFoundException } from '@nestjs/common';
-import { PrismaService } from '../../PrismaService';
-import { ProteinsService } from '../proteins.service';
+import { PrismaService } from '../PrismaService';
+import { ProteinsService } from './proteins.service';
 import { Test, TestingModule } from '@nestjs/testing';
 
 describe('ProteinsService', () => {
@@ -16,14 +16,20 @@ describe('ProteinsService', () => {
     prisma = module.get<PrismaService>(PrismaService);
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('should be defined', () => {
+    expect(proteinsService).toBeDefined();
+  });
+
   describe('create', () => {
     it('should create a protein', async () => {
       const result = {
         name: 'ProteinTest',
-        imageInactive:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiRB0UO0dl40NGukHc_JLEEP6_GtSIB4hsqg&s',
-        imageActive:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiRB0UO0dl40NGukHc_JLEEP6_GtSIB4hsqg&s',
+        imageInactive: 'Image Test Inactive',
+        imageActive: 'Image Test Active',
         description: 'Esta é uma proteína criada para teste.',
         price: 10.9,
       };
@@ -33,10 +39,8 @@ describe('ProteinsService', () => {
       expect(
         await proteinsService.create({
           name: 'ProteinTest',
-          imageInactive:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiRB0UO0dl40NGukHc_JLEEP6_GtSIB4hsqg&s',
-          imageActive:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiRB0UO0dl40NGukHc_JLEEP6_GtSIB4hsqg&s',
+          imageInactive: 'Image Test Inactive',
+          imageActive: 'Image Test Active',
           description: 'Esta é uma proteína criada para teste.',
           price: 10.9,
         }),
@@ -60,10 +64,8 @@ describe('ProteinsService', () => {
     it('should return a protein', async () => {
       const result = {
         name: 'ProteinTest',
-        imageInactive:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiRB0UO0dl40NGukHc_JLEEP6_GtSIB4hsqg&s',
-        imageActive:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiRB0UO0dl40NGukHc_JLEEP6_GtSIB4hsqg&s',
+        imageInactive: 'Image Test Inactive',
+        imageActive: 'Image Test Active',
         description: 'Esta é uma proteína criada para teste.',
         price: 10.9,
       };
@@ -86,10 +88,8 @@ describe('ProteinsService', () => {
       expect(
         await proteinsService.update('1', {
           name: 'ProteinTest',
-          imageInactive:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiRB0UO0dl40NGukHc_JLEEP6_GtSIB4hsqg&s',
-          imageActive:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiRB0UO0dl40NGukHc_JLEEP6_GtSIB4hsqg&s',
+          imageInactive: 'Image Test Inactive',
+          imageActive: 'Image Test Active',
           description: 'Esta é uma proteína criada para teste e alterada.',
           price: 10.9,
         }),
@@ -101,10 +101,8 @@ describe('ProteinsService', () => {
     it('should remove a protein', async () => {
       const result = {
         name: 'ProteinTest',
-        imageInactive:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiRB0UO0dl40NGukHc_JLEEP6_GtSIB4hsqg&s',
-        imageActive:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiRB0UO0dl40NGukHc_JLEEP6_GtSIB4hsqg&s',
+        imageInactive: 'Image Test Inactive',
+        imageActive: 'Image Test Active',
         description: 'Esta é uma proteína criada para teste.',
         price: 10.9,
       };

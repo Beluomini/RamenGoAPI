@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { OrdersService } from '../orders.service';
-import { PrismaService } from '../../PrismaService';
+import { OrdersService } from '../orders/orders.service';
+import { PrismaService } from '../PrismaService';
 
 describe('OrdersController', () => {
   let ordersService: OrdersService;
@@ -13,6 +13,10 @@ describe('OrdersController', () => {
 
     ordersService = module.get<OrdersService>(OrdersService);
     prisma = module.get<PrismaService>(PrismaService);
+  });
+
+  beforeEach(() => {
+    jest.clearAllMocks();
   });
 
   it('should be defined', () => {

@@ -1,5 +1,5 @@
-import { PrismaService } from '../../PrismaService';
-import { BrothsService } from '../broths.service';
+import { PrismaService } from '../PrismaService';
+import { BrothsService } from '../broths/broths.service';
 import { Test, TestingModule } from '@nestjs/testing';
 
 describe('BrothsService', () => {
@@ -13,6 +13,14 @@ describe('BrothsService', () => {
 
     brothsService = module.get<BrothsService>(BrothsService);
     prisma = module.get<PrismaService>(PrismaService);
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('should be defined', () => {
+    expect(brothsService).toBeDefined();
   });
 
   describe('findAll', () => {
