@@ -70,9 +70,8 @@ npm test
 - [x] Documentation
 - [x] Docker
 - [x] PostgreSQL
-- [ ] Tests
+- [x] Tests
   - [x] Unit Tests
-  - [ ] E2E Tests (working...)
 - [ ] Message Queueing (working...)
 - [ ] Login (working...)
 
