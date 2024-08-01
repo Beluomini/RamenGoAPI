@@ -2,6 +2,20 @@
 
 One platform so that the user can place a ramen order, choosing the types of broths and proteins in the dish, and make a order with that.
 
+## ▶️ Run (using Docker)
+
+With Docker installed you can just build using docker-compose:
+
+```bash
+docker-compose build
+```
+
+And then up the containers:
+
+```bash
+docker-compose up
+```
+
 ## 🧾 Documentation
 
 The documentation was written with Swagger and can be viwed when the app is runing in [{API_URL}/api#/](http://localhost:3000/api#/)
@@ -16,23 +30,9 @@ This key will be searched in the requisition header with the key "x-api-key". Th
 
 For the Postgres database is necessary a variable named DATABASE_URL to connect with your DB.
 
-Then you must to run the Prisma migrations. Prisma is a ORM and help to make queries in DB. You can run the migrations in your terminal with that line:
+The .env file must to be in aplication root path, and de variable definition must to be like the .env.example.
 
-```bash
-npx prisma migrate dev
-```
-
-The .env file must to be in aplication root path, and de variable definition must to be like:
-
-```dotenv
-PORT=3000
-
-API_KEY='YourApiKey'
-
-DATABASE_URL= 'postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=SCHEMA'
-```
-
-## ▶️ Run
+## ▶️ Run (without Docker)
 
 The backend has the database's structure and a API Rest hat communicates with the database and provides routes.
 To the database was used a SQL structure with SQLite. For the rest api of the backend, the TypeScript language was used with the Node framework and the Prisma tool.
@@ -41,7 +41,17 @@ To start de backend in development environment you need install Node and run:
 
 ```bash
 npm install
+```
 
+Then you must to run the Prisma migrations. Prisma is a ORM and help to make queries in DB. You can run the migrations in your terminal with that line:
+
+```bash
+npx prisma migrate dev
+```
+
+Finally, just run the app:
+
+```bash
 npm run dev
 ```
 
